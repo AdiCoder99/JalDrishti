@@ -1,13 +1,13 @@
 const BasicParameters = ({ scenario, updateScenario }) => {
   return (
-    <section>
-      <div className="mb-4">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+    <section className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+      <div className="mb-4 border-b border-slate-200 pb-3">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-blue-700">
           Basic Parameters
         </h3>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 [&_label]:text-slate-700 [&_input]:rounded-lg [&_input]:border-slate-300 [&_input]:bg-white [&_input]:shadow-sm [&_input]:transition [&_input]:focus:border-blue-500 [&_input]:focus:ring-2 [&_input]:focus:ring-blue-100 [&_select]:rounded-lg [&_select]:border-slate-300 [&_select]:bg-white [&_select]:shadow-sm [&_select]:transition [&_select]:focus:border-blue-500 [&_select]:focus:ring-2 [&_select]:focus:ring-blue-100">
         {/* Dam */}
         <div>
           <label className="mb-1.5 block text-xs font-medium text-slate-700">

@@ -33,15 +33,15 @@ const AdvancedParameters = ({
   updateOutput,
 }) => {
   return (
-    <section className="border-t border-slate-200 pt-5">
+    <section className="mb-30 rounded-xl border border-slate-200 bg-slate-50/70 p-4">
       {/* Accordion Header */}
       <button
         type="button"
         onClick={() => setShowAdvanced(!showAdvanced)}
-        className="flex w-full items-center justify-between text-left"
+        className="flex w-full items-center justify-between rounded-lg text-left transition hover:bg-blue-50"
       >
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-blue-700">
             Advanced Parameters
           </h3>
 
@@ -69,7 +69,7 @@ const AdvancedParameters = ({
 
       {/* Advanced Content */}
       {showAdvanced && (
-        <div className="mt-5 space-y-5">
+        <div className="mt-5 space-y-5 [&_input]:rounded-lg [&_input]:border-slate-300 [&_input]:bg-white [&_input]:shadow-sm [&_input]:transition [&_input]:focus:border-blue-500 [&_input]:focus:ring-2 [&_input]:focus:ring-blue-100 [&_select]:rounded-lg [&_select]:border-slate-300 [&_select]:bg-white [&_select]:shadow-sm [&_select]:transition [&_select]:focus:border-blue-500 [&_select]:focus:ring-2 [&_select]:focus:ring-blue-100">
           {/* Simulation Engine */}
           <div>
             <label className="mb-1.5 block text-xs font-medium text-slate-700">
@@ -285,7 +285,7 @@ const AdvancedParameters = ({
                         e.target.checked
                       )
                     }
-                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                    className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-2 focus:ring-blue-200"
                   />
 
                   <span className="text-sm text-slate-700">

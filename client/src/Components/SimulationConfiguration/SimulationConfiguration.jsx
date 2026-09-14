@@ -2,119 +2,50 @@ import { useState } from "react";
 import BasicParameters from "./BasicParameters";
 import ImpactAnalysis from "./ImpactAnalysis";
 import AdvancedParameters from "./AdvancedParameters";
+import { useAppContext } from "../../context/useAppContext";
 
 const SimulationConfiguration = () => {
-  const [scenario, setScenario] = useState({
-    dam: "tehri",
-    scenarioType: "dam_break",
-    reservoirLevel: 815,
-    breachWidth: 100,
-    breachFormationTime: 30,
-    simulationDuration: 6,
-
-    impactLayers: {
-      settlements: true,
-      roads: true,
-      buildings: true,
-      bridges: false,
-      criticalInfrastructure: false,
-    },
-
-    advanced: {
-      simulationEngine: "delft3d",
-      terrainResolution: 30,
-      timeStep: "auto",
-      manningRoughness: "auto",
-      initialRiverDischarge: "auto",
-      downstreamBoundary: "auto",
-      rainfall: "none",
-      outputInterval: 10,
-
-      outputs: {
-        floodExtent: true,
-        waterDepth: true,
-        flowVelocity: true,
-        arrivalTime: true,
-        maximumDepth: true,
-        maximumVelocity: true,
-      },
-    },
-  });
-
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const {
+    scenario,
+    updateScenario,
+    updateImpactLayer,
+    updateAdvanced,
+    updateOutput,
+    runSimulation,
+    saveScenario,
+    loadScenario,
+    requestState,
+  } = useAppContext();
 
-  const updateScenario = (field, value) => {
-    setScenario((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  const updateImpactLayer = (field, value) => {
-    setScenario((prev) => ({
-      ...prev,
-      impactLayers: {
-        ...prev.impactLayers,
-        [field]: value,
-      },
-    }));
-  };
-
-  const updateAdvanced = (field, value) => {
-    setScenario((prev) => ({
-      ...prev,
-      advanced: {
-        ...prev.advanced,
-        [field]: value,
-      },
-    }));
-  };
-
-  const updateOutput = (field, value) => {
-    setScenario((prev) => ({
-      ...prev,
-      advanced: {
-        ...prev.advanced,
-        outputs: {
-          ...prev.advanced.outputs,
-          [field]: value,
-        },
-      },
-    }));
-  };
-
-  const handleRunSimulation = () => {
-    console.log("Simulation payload:", scenario);
-
-    // Later:
-    // fetch("/api/simulations", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(scenario),
-    // });
+  const handleRunSimulation = async () => {
+    try {
+      await runSimulation();
+    } catch {
+      // The provider exposes the request error for the UI/API integration.
+    }
   };
 
   const handleSaveScenario = () => {
-    localStorage.setItem("jaldristiScenario", JSON.stringify(scenario));
+    saveScenario();
     alert("Scenario saved successfully.");
   };
 
   const handleLoadScenario = () => {
-    const savedScenario = localStorage.getItem("jaldristiScenario");
-
-    if (!savedScenario) {
-      alert("No saved scenario found.");
+    try {
+      loadScenario();
+      alert("Scenario loaded successfully.");
+    } catch (error) {
+      alert(error.message);
       return;
     }
-
-    setScenario(JSON.parse(savedScenario));
   };
 
   return (
-    <aside className="w-[320px] shrink-0 border-r border-slate-200 bg-white overflow-y-auto">
+    <aside className="w-[320px] shrink-0 overflow-y-auto border-r border-slate-200 bg-slate-50">
       {/* Header */}
-      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white px-5 py-4">
-        <h2 className="text-xl font-semibold text-slate-900">
+      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white px-5 py-4 shadow-sm">
+        <h2 className="text-xl font-bold tracking-tight text-slate-900">
           Simulation Configuration
         </h2>
 
@@ -123,7 +54,7 @@ const SimulationConfiguration = () => {
         </p>
       </div>
 
-      <div className="space-y-6 p-5">
+      <div className="space-y-4 p-4">
         {/* Basic Parameters */}
         <BasicParameters
           scenario={scenario}
@@ -146,20 +77,24 @@ const SimulationConfiguration = () => {
         />
 
         {/* Actions */}
-        <div className="space-y-2 border-t border-slate-200 pt-5">
+        <div className="fixed bottom-0 left-0 w-[320px] space-y-2 border-t border-slate-200 bg-white p-4 shadow-[0_-6px_20px_rgba(15,23,42,0.08)]">
           <button
             type="button"
             onClick={handleRunSimulation}
-            className="flex w-full items-center justify-center rounded-md bg-[#2563EB] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            disabled={requestState.isLoading}
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-blue-200 transition hover:-translate-y-0.5 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            Run Simulation
+            <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+            </svg>
+            {requestState.isLoading ? "Running Simulation..." : "Run Simulation"}
           </button>
 
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={handleSaveScenario}
-              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 transition hover:bg-slate-50 hover:text-slate-900"
+              className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
             >
               Save Scenario
             </button>
@@ -167,7 +102,7 @@ const SimulationConfiguration = () => {
             <button
               type="button"
               onClick={handleLoadScenario}
-              className="rounded-md border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-600 transition hover:bg-slate-50 hover:text-slate-900"
+              className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
             >
               Load Scenario
             </button>
