@@ -12,16 +12,16 @@ const AffectedAssets = () => {
     ];
 
     return (
-        <section className="border-t border-slate-200 bg-white px-5 py-5">
-            <h2 className="mb-4 text-sm font-semibold tracking-wide text-slate-900">
-                Potentially Affected
+        <section className="border-t border-[#d5e0e8] bg-white px-5 py-5">
+            <h2 className="mb-4 text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#10253a]">
+                Potentially affected
             </h2>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
                 {affectedAssets.map((asset, index) => (
                     <div
                         key={asset.type}
-                        className="rounded-xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                        className="rounded-lg border border-[#d5e0e8] bg-white px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
                     >
                         <div className="mb-3 flex items-center justify-between">
                             <p className="text-xs font-medium uppercase tracking-wide text-slate-500">

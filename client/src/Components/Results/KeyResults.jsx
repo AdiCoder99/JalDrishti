@@ -5,32 +5,32 @@ const KeyResults = () => {
     const { keyResults } = results;
     const accentStyles = [
         {
-            card: "border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50",
-            badge: "bg-blue-100 text-blue-700",
-            value: "text-blue-900",
+            card: "border-cyan-200 bg-[#effaff]",
+            badge: "bg-cyan-100 text-cyan-800",
+            value: "text-[#102f4b]",
         },
         {
-            card: "border-cyan-200 bg-gradient-to-br from-cyan-50 to-sky-50",
-            badge: "bg-cyan-100 text-cyan-700",
-            value: "text-cyan-900",
+            card: "border-blue-200 bg-[#f1f6ff]",
+            badge: "bg-blue-100 text-blue-800",
+            value: "text-[#102f4b]",
         },
         {
-            card: "border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50",
-            badge: "bg-violet-100 text-violet-700",
-            value: "text-violet-900",
+            card: "border-amber-200 bg-[#fffaf0]",
+            badge: "bg-amber-100 text-amber-800",
+            value: "text-[#102f4b]",
         },
         {
-            card: "border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50",
+            card: "border-emerald-200 bg-[#f0fbf7]",
             badge: "bg-emerald-100 text-emerald-700",
             value: "text-emerald-900",
         },
     ];
 
     return (
-        <section className="border-t border-slate-200 bg-white px-5 py-5">
+        <section className="border-t border-[#d5e0e8] bg-white px-5 py-5">
 
-            <h2 className="mb-4 text-sm font-semibold tracking-wide text-slate-900">
-                Key Results
+            <h2 className="mb-4 text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#10253a]">
+                Key results
             </h2>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -40,7 +40,7 @@ const KeyResults = () => {
                     return (
                     <div
                         key={result.label}
-                        className={`rounded-xl border px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${style.card}`}
+                        className={`rounded-lg border px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${style.card}`}
                     >
                         <span
                             className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold ${style.badge}`}

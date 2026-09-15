@@ -1,1 +1,78 @@
 @import "tailwindcss";
+
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #172033;
+  background: #eef3f7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 80% -20%, rgba(29, 119, 177, 0.12), transparent 34rem),
+    #eef3f7;
+}
+
+/* Keep the interface on a restrained enterprise type scale. */
+.font-extrabold,
+.font-bold {
+  font-weight: 600;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-medium {
+  font-weight: 400;
+}
+
+.uppercase {
+  text-transform: none;
+}
+
+.tracking-wide,
+.tracking-wider,
+.tracking-\[0\.14em\],
+.tracking-\[0\.16em\],
+.tracking-\[0\.18em\],
+.tracking-\[0\.2em\],
+.tracking-\[0\.22em\],
+.tracking-\[0\.24em\] {
+  letter-spacing: 0.01em;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button,
+label,
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="range"] {
+  cursor: pointer;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(21, 129, 184, 0.28);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: #fff;
+  background: #126ba2;
+}

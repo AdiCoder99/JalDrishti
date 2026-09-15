@@ -5,11 +5,12 @@ import ResultsSection from '../Components/Results/ResultsSection'
 
 const Dashboard = () => {
   return (
-    <div className="flex h-[calc(100vh-5rem)] min-h-0 gap-4 bg-slate-50 p-4">
+    <div className="min-h-[calc(100vh-4.75rem)] bg-[#eef3f7] p-3 sm:p-5">
+      <div className="mx-auto flex max-w-[1800px] min-h-0 flex-col gap-4 lg:flex-row">
       <SimulationConfiguration />
 
-      <main className="min-w-0 flex-1 overflow-y-auto rounded-md border border-slate-200 bg-white">
-        <div className="flex min-h-[34rem] gap-4 p-4">
+      <main className="scrollbar-thin min-w-0 flex-1 overflow-y-auto rounded-xl border border-[#d5e0e8] bg-[#f8fafb] shadow-[0_12px_30px_rgba(15,45,70,0.06)]">
+        <div className="flex min-h-[34rem] flex-col gap-4 p-3 sm:p-4 xl:flex-row">
           <div className="min-w-0 flex-[1.15]">
             <FloodMap />
           </div>
@@ -17,7 +18,7 @@ const Dashboard = () => {
         </div>
         <ResultsSection />
       </main>
-      
+      </div>
     </div>
     
   )

@@ -16,16 +16,16 @@ const MapLayers = () => {
     ];
 
     return (
-        <aside className="w-80 shrink-0 overflow-y-auto border-l border-slate-200 bg-slate-50">
-            <div className="sticky top-0 z-10 border-b border-slate-200 bg-white px-4 py-4 shadow-sm">
+        <aside className="scrollbar-thin w-full shrink-0 overflow-y-auto rounded-lg border border-[#d5e0e8] bg-[#f3f7fa] xl:w-80">
+            <div className="sticky top-0 z-10 border-b border-[#d5e0e8] bg-white px-4 py-4">
                 <div className="flex items-start justify-between gap-3">
                     <div>
-                        <h2 className="text-sm font-bold text-slate-900">Map Layers</h2>
+                        <h2 className="text-sm font-extrabold text-[#10253a]">Map layers</h2>
                         <p className="mt-1 text-xs text-slate-500">
                             Control what is displayed on the map.
                         </p>
                     </div>
-                    <span className="rounded-full bg-blue-50 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-blue-700">
+                    <span className="rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
                         Live
                     </span>
                 </div>
@@ -35,7 +35,7 @@ const MapLayers = () => {
                 <LayerGroup title="Simulation Layers" tone="blue" layers={simulationLayers} values={layers} onToggle={toggleLayer} />
                 <LayerGroup title="Reference Layers" tone="slate" layers={referenceLayers} values={layers} onToggle={toggleLayer} />
 
-                <section className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+                <section className="rounded-lg border border-[#d5e0e8] bg-white p-3 shadow-sm">
                     <div className="mb-3 flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full bg-violet-500" />
                         <h3 className="text-[11px] font-bold uppercase tracking-wider text-slate-600">

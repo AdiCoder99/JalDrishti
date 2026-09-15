@@ -1,13 +1,13 @@
 const BasicParameters = ({ scenario, updateScenario }) => {
   return (
-    <section className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
-      <div className="mb-4 border-b border-slate-200 pb-3">
-        <h3 className="text-xs font-bold uppercase tracking-wider text-blue-700">
+    <section className="rounded-lg border border-[#d5e0e8] bg-white p-4 shadow-sm">
+      <div className="mb-4 border-b border-[#e5edf2] pb-3">
+        <h3 className="text-sm font-semibold text-[#126ba2]">
           Basic Parameters
         </h3>
       </div>
 
-      <div className="space-y-4 [&_label]:text-slate-700 [&_input]:rounded-lg [&_input]:border-slate-300 [&_input]:bg-white [&_input]:shadow-sm [&_input]:transition [&_input]:focus:border-blue-500 [&_input]:focus:ring-2 [&_input]:focus:ring-blue-100 [&_select]:rounded-lg [&_select]:border-slate-300 [&_select]:bg-white [&_select]:shadow-sm [&_select]:transition [&_select]:focus:border-blue-500 [&_select]:focus:ring-2 [&_select]:focus:ring-blue-100">
+      <div className="space-y-4 [&_label]:font-semibold [&_label]:text-slate-600 [&_input]:rounded-md [&_input]:border-[#ccd9e2] [&_input]:bg-[#f8fafc] [&_input]:shadow-none [&_input]:transition [&_input]:focus:border-cyan-500 [&_input]:focus:ring-2 [&_input]:focus:ring-cyan-100 [&_select]:rounded-md [&_select]:border-[#ccd9e2] [&_select]:bg-[#f8fafc] [&_select]:shadow-none [&_select]:transition [&_select]:focus:border-cyan-500 [&_select]:focus:ring-2 [&_select]:focus:ring-cyan-100">
         {/* Dam */}
         <div>
           <label className="mb-1.5 block text-xs font-medium text-slate-700">

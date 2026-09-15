@@ -20,10 +20,10 @@ const SimulationTimeline = () => {
     };
 
     return (
-        <section className="border-t border-slate-200 bg-white px-5 py-3">
+        <section className="border-t border-[#d5e0e8] bg-white px-5 py-3">
             <div className="flex items-center justify-between">
-                <h2 className="text-sm font-semibold text-slate-900">
-                    Simulation Timeline
+                <h2 className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#10253a]">
+                    Simulation timeline
                 </h2>
 
                 <div className="flex items-center gap-3">

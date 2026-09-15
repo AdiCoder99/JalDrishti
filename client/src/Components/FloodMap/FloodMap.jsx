@@ -15,7 +15,7 @@ const FloodMap = () => {
     ];
 
     return (
-        <div className="flex w-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+        <div className="flex w-full flex-col overflow-hidden rounded-lg border border-[#d5e0e8] bg-white shadow-sm">
             <MapToolbar />
             <div className="relative h-[34rem] min-h-0 w-full overflow-hidden">
                 <MapContainer
@@ -31,7 +31,7 @@ const FloodMap = () => {
                         <Popup>
                             <div>
                                 <p className="font-semibold">Tehri Dam</p>
-                                <p className="text-sm text-slate-500">Uttarakhand</p>
+                                <p className="text-sm text-slate-500">Selected basin</p>
                             </div>
                         </Popup>
                     </Marker>

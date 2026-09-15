@@ -42,11 +42,15 @@ const SimulationConfiguration = () => {
   };
 
   return (
-    <aside className="w-[320px] shrink-0 overflow-y-auto border-r border-slate-200 bg-slate-50">
+    <aside className="scrollbar-thin flex max-h-[44rem] w-full shrink-0 flex-col overflow-y-auto rounded-xl border border-[#d5e0e8] bg-[#f8fafb] shadow-[0_8px_24px_rgba(15,45,70,0.05)] lg:max-h-none lg:w-[320px]">
       {/* Header */}
-      <div className="sticky top-0 z-10 border-b border-slate-200 bg-white px-5 py-4 shadow-sm">
-        <h2 className="text-xl font-bold tracking-tight text-slate-900">
-          Simulation Configuration
+      <div className="sticky top-0 z-10 border-b border-[#d5e0e8] bg-white px-5 py-5">
+        <div className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#157cad]">
+          <span className="h-2 w-2 rounded-full bg-[#157cad]" />
+          Scenario builder
+        </div>
+        <h2 className="text-lg font-semibold tracking-tight text-[#10253a]">
+          Simulation configuration
         </h2>
 
         <p className="mt-1 text-xs text-slate-500">
@@ -54,7 +58,7 @@ const SimulationConfiguration = () => {
         </p>
       </div>
 
-      <div className="space-y-4 p-4">
+      <div className="scrollbar-thin flex-1 space-y-4 overflow-y-auto p-3">
         {/* Basic Parameters */}
         <BasicParameters
           scenario={scenario}
@@ -77,12 +81,12 @@ const SimulationConfiguration = () => {
         />
 
         {/* Actions */}
-        <div className="fixed bottom-0 left-0 w-[320px] space-y-2 border-t border-slate-200 bg-white p-4 shadow-[0_-6px_20px_rgba(15,23,42,0.08)]">
+        <div className="sticky bottom-0 z-10 space-y-2 border-t border-[#d5e0e8] bg-white p-3 shadow-[0_-8px_20px_rgba(15,45,70,0.08)]">
           <button
             type="button"
             onClick={handleRunSimulation}
             disabled={requestState.isLoading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-blue-200 transition hover:-translate-y-0.5 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#126ba2] px-4 py-3 text-sm font-semibold text-white shadow-[0_7px_14px_rgba(18,107,162,0.24)] transition hover:-translate-y-0.5 hover:bg-[#0d5684] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
           >
             <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
@@ -94,7 +98,7 @@ const SimulationConfiguration = () => {
             <button
               type="button"
               onClick={handleSaveScenario}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+              className="rounded-lg border border-[#d5e0e8] bg-white px-3 py-2 text-xs font-medium text-slate-600 shadow-sm transition hover:border-cyan-300 hover:bg-cyan-50 hover:text-[#126ba2]"
             >
               Save Scenario
             </button>
@@ -102,7 +106,7 @@ const SimulationConfiguration = () => {
             <button
               type="button"
               onClick={handleLoadScenario}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
+              className="rounded-lg border border-[#d5e0e8] bg-white px-3 py-2 text-xs font-medium text-slate-600 shadow-sm transition hover:border-cyan-300 hover:bg-cyan-50 hover:text-[#126ba2]"
             >
               Load Scenario
             </button>

@@ -6,8 +6,10 @@ import { AppProvider } from './context/AppContext'
 function App() {
   return (
     <AppProvider>
-      <Navbar />
-      <Dashboard />
+      <div className="app-shell">
+        <Navbar />
+        <Dashboard />
+      </div>
     </AppProvider>
   )
 }

@@ -165,16 +165,37 @@ export const AppProvider = ({ children }) => {
     const runSimulation = async () => {
         setRequestState({ isLoading: true, error: null });
         try {
-            const data = await request("/api/simulations", {
+            const job = await request("/api/simulations", {
                 method: "POST",
                 body: JSON.stringify(scenario),
             });
-            if (data?.results) {
-                setResults(data.results);
+
+            if (!job?.jobId) {
+                throw new Error("The server did not return a simulation job ID.");
             }
-            return data;
+
+            const pollInterval = 2000;
+            const maxPolls = 900;
+            for (let poll = 0; poll < maxPolls; poll += 1) {
+                await new Promise((resolve) => window.setTimeout(resolve, pollInterval));
+                const status = await request(`/api/simulations/${job.jobId}`);
+
+                if (status.status === "completed") {
+                    if (status.results) {
+                        setResults(status.results);
+                    }
+                    return status;
+                }
+
+                if (status.status === "failed") {
+                    throw new Error(status.error || "Simulation failed.");
+                }
+            }
+
+            throw new Error("Simulation timed out while waiting for the simulation engine.");
         } catch (error) {
-            setRequestState({ isLoading: false, error: error.message });
+            const message = error instanceof Error ? error.message : "Simulation request failed.";
+            setRequestState({ isLoading: false, error: message });
             throw error;
         } finally {
             setRequestState((currentState) => ({ ...currentState, isLoading: false }));

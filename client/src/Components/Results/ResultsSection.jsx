@@ -36,11 +36,12 @@ const ResultsSection = () => {
     };
 
     return (
-        <section className="border-t border-slate-200 bg-white">
-            <div className="border-b border-slate-200 px-5 py-4">
+        <section className="border-t border-[#d5e0e8] bg-white">
+            <div className="border-b border-[#d5e0e8] bg-[#f8fafb] px-5 py-5">
                 <div>
-                    <h2 className="text-base font-semibold text-slate-900">
-                        Analysis Results
+                    <p className="text-xs font-semibold text-[#157cad]">Decision support</p>
+                    <h2 className="mt-1 text-xl font-semibold tracking-tight text-[#10253a]">
+                        Analysis results
                     </h2>
                     <p className="mt-1 text-xs text-slate-500">
                         Summary of the current flood simulation and potential impact.
@@ -49,7 +50,7 @@ const ResultsSection = () => {
             </div>
 
             {requestState.error && (
-                <p className="border-b border-red-100 bg-red-50 px-5 py-3 text-xs text-red-700">
+                <p className="border-b border-red-100 bg-red-50 px-5 py-3 text-xs font-medium text-red-700">
                     {requestState.error}
                 </p>
             )}
@@ -57,7 +58,7 @@ const ResultsSection = () => {
             <KeyResults />
             <AffectedAssets />
 
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 bg-slate-50 px-5 py-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#d5e0e8] bg-[#f3f7fa] px-5 py-4">
                 <div>
                     <h2 className="text-sm font-semibold text-slate-900">
                         Export analysis
@@ -70,7 +71,7 @@ const ResultsSection = () => {
                 <button
                     type="button"
                     onClick={exportResults}
-                    className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    className="inline-flex items-center gap-2 rounded-md bg-[#102f4b] px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0b2237] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
                 >
                     <svg
                         aria-hidden="true"
